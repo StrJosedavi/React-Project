@@ -11,9 +11,13 @@ export const ButtonMain = styled.button`
     height: 40px;
     display: flex;
     align-items: center;
-    
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+
     &:hover{
         background: #338033;
+    }
+    &:active{
+        transform: translateY(2px);
     }
 `;
 
