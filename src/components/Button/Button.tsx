@@ -31,11 +31,26 @@ interface ButtonProps{
 }
 
 export const Button: React.FC<ButtonProps> = ({ label, icon, onClick, style, styleLabel, styleIcon }) => {
+ 
+    const additionalStyleLabel: React.CSSProperties = {
+        left: '40px',
+        ...styleLabel
+      };
 
     return (
         <ButtonMain onClick={onClick} style={style}>
-            <IconButton src={icon} alt="IconButton" style={styleIcon}/>
-            <LabelButton variant='button' sx={styleLabel}>{label}</LabelButton>
+            {icon !== undefined && (
+                <>
+                  <IconButton src={icon} alt="IconButton" style={styleIcon}/>
+                  <LabelButton variant='button' sx={styleLabel}>{label}</LabelButton>
+                </>     
+            )}
+            {icon === undefined && (
+                <>
+                  {styleLabel}
+                  <LabelButton variant='button' sx={additionalStyleLabel}>{label}</LabelButton>
+                </>     
+            )}
         </ButtonMain>
     );
 }

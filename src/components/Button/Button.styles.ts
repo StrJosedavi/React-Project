@@ -3,14 +3,18 @@ import { Typography } from "@mui/material";
 
 export const ButtonMain = styled.button`
     cursor: pointer;
-    background-color: #999999;
+    background-color: #555555;
     color: #FFF;
     border: none;
     border-radius: 4px;
     width: 150px;
     height: 40px;
     display: flex;
-    align-items: center;   
+    align-items: center;
+    
+    &:hover{
+        background: #338033;
+    }
 `;
 
 
@@ -22,7 +26,6 @@ export const IconButton = styled.img`
 export const LabelButton = styled(Typography)`
     position: relative;
     left: 10px;
-    font-size: 1.2em;
 `;
 
 
