@@ -6,10 +6,10 @@ interface InputProps{
 
 }
 
-export const Input: React.FC<InputProps> = ({}) => {
+export const Input: React.FC<InputProps> = () => {
     
     return (
-       <InputMain placeholder='teste'>
+       <InputMain placeholder='PLACEHOLDER'>
        
        </InputMain>
     );
