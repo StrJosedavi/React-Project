@@ -9,6 +9,8 @@ export default defineConfig(({ command, mode }) => {
     define: {
       __APP_ENV__: env.APP_ENV,
     },
-    base: 'http://localhost:3000'
+    base: 'http://localhost:3000',
+    root: './src',
+   
   }
 })
