@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Typography } from "@mui/material";
 
-export const ButtonMain = styled.button`
+export const Container = styled.button`
     cursor: pointer;
     background-color: #555555;
     color: #FFF;
@@ -9,9 +9,8 @@ export const ButtonMain = styled.button`
     border-radius: 4px;
     width: 150px;
     height: 40px;
-    display: flex;
-    align-items: center;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
 
     &:hover{
         background: #338033;
@@ -22,14 +21,14 @@ export const ButtonMain = styled.button`
 `;
 
 
-export const IconButton = styled.img`
-    width: 50px;
+export const Icon = styled.img`
+    width: 40px;
     height: 20px;
+    margin-right: 10px;
 `;
 
-export const LabelButton = styled(Typography)`
-    position: relative;
-    left: 10px;
+export const Label = styled(Typography)`
+    display: flex;
 `;
 
 

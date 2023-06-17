@@ -4,7 +4,7 @@
 
 Para rodar a aplicação em desenvolvimento:
 
-### `yarn start`
+### `yarn dev`
 
-onde irá abrir o link [http://localhost:3000](http://localhost:3000) para visualização do projeto pelo navegador.
+onde irá abrir o link [http://localhost:5173](http://127.0.0.1:5173) para visualização do projeto pelo navegador.
 
