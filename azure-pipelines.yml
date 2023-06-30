@@ -8,15 +8,16 @@ trigger:
     include:
       - main  # Define a branch principal que deve acionar o pipeline
 
-pool:
-  vmImage: 'ubuntu-latest'  # Define a imagem da máquina virtual para execução do pipeline
-
 steps:
+  - checkout: self
+    persistCredentials: true
+    clean: true
+
   - script: |
-      git clone https://github.com/StrJosedavi/React-Project
-      cd React-Project
-      git remote add azure https://TeamReactProject@dev.azure.com/TeamReactProject/Projeto%20Discoteca/_git/Projeto%20Discoteca
-      git push azure
-    displayName: 'Sincronizar com o repositório do Azure DevOps'
-    env:
-      AzureCredentials: $(azureCredentials)
+      git config --global user.email "josedavi100@gmail.com"
+      git config --global user.name "StrJosedavi"
+      git checkout main
+      git fetch origin pull/$(System.PullRequest.PullRequestId)/merge:pull/$(System.PullRequest.PullRequestId)/merge
+      git merge pull/$(System.PullRequest.PullRequestId)/merge --no-edit
+      git push origin main
+    displayName: 'Sync Pull Request'
