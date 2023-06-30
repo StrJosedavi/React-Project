@@ -15,6 +15,8 @@ steps:
   - script: |
       git clone https://github.com/StrJosedavi/React-Project
       cd React-Project
-      git remote add azure https://TeamReactProject@dev.azure.com/TeamReactProject/Projeto%20Discoteca/_git/Projeto%20Discoteca
+      git remote add azure $(azureRepositoryUrl)
       git push azure
     displayName: 'Sincronizar com o repositório do Azure DevOps'
+    env:
+      AzureCredentials: $(azureCredentials)
