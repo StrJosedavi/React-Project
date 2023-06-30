@@ -6,7 +6,7 @@
 trigger:
   branches:
     include:
-      - main  # Define a branch principal que deve acionar o pipeline
+      - main
 
 steps:
   - checkout: self
@@ -16,8 +16,6 @@ steps:
   - script: |
       git config --global user.email "josedavi100@gmail.com"
       git config --global user.name "StrJosedavi"
-      git checkout $(Build.SourceBranchName)
-      git fetch origin pull/$(System.PullRequest.PullRequestId)/merge:pullrequest/$(System.PullRequest.PullRequestId)/merge
-      git merge pullrequest/$(System.PullRequest.PullRequestId)/merge --no-edit
+      git pull origin pull/$(System.PullRequest.PullRequestId)/merge
       git push origin $(Build.SourceBranchName)
     displayName: 'Sync Pull Request'
