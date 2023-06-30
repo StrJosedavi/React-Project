@@ -16,8 +16,8 @@ steps:
   - script: |
       git config --global user.email "josedavi100@gmail.com"
       git config --global user.name "StrJosedavi"
-      git checkout main
-      git fetch origin pull/$(System.PullRequest.PullRequestId)/merge:pull/$(System.PullRequest.PullRequestId)/merge
-      git merge pull/$(System.PullRequest.PullRequestId)/merge --no-edit
-      git push origin main
+      git checkout $(Build.SourceBranch)
+      git fetch origin pull/$(System.PullRequest.PullRequestNumber)/merge:pullrequest/$(System.PullRequest.PullRequestNumber)/merge
+      git merge pullrequest/$(System.PullRequest.PullRequestNumber)/merge --no-edit
+      git push origin $(Build.SourceBranch)
     displayName: 'Sync Pull Request'
