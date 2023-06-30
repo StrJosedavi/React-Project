@@ -1,0 +1,20 @@
+# Node.js with React
+# Build a Node.js project that uses React.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+  branches:
+    include:
+      - main  # Define a branch principal que deve acionar o pipeline
+
+pool:
+  vmImage: 'ubuntu-latest'  # Define a imagem da máquina virtual para execução do pipeline
+
+steps:
+  - script: |
+      git clone https://github.com/StrJosedavi/React-Project
+      cd React-Project
+      git remote add azure https://TeamReactProject@dev.azure.com/TeamReactProject/Projeto%20Discoteca/_git/Projeto%20Discoteca
+      git push azure
+    displayName: 'Sincronizar com o repositório do Azure DevOps'
