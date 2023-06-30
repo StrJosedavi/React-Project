@@ -15,6 +15,7 @@
     "@types/node": "^16.18.34",
     "@types/react": "^18.2.8",
     "@types/react-dom": "^18.2.4",
+    "commitlint": "17.6.6",
     "cypress": "^12.14.0",
     "dotenv": "^16.3.0",
     "parse-json": "^7.0.0",
