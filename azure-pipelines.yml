@@ -14,7 +14,8 @@ name: Deploy web app to Azure Static Web Apps
 
 on:
   push:
-    branches: [ "main" ]
+    trigger:
+      branches: [ "main" ]
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches: [ "main" ]
