@@ -1,1 +1,46 @@
-.
+trigger:
+  branches:
+    include:
+      - main
+
+stages:
+  - stage: Build
+    displayName: "Build stage"
+    jobs:
+      - job: BuildJob
+        displayName: "Build job"
+        pool:
+          vmImage: "ubuntu-latest"
+        steps:
+          - script: |
+              yarn install
+              yarn build
+            displayName: "Install dependencies and Build"
+          - task: CopyFiles@2
+            inputs:
+              SourceFolder: "$(System.DefaultWorkingDirectory)"
+              Contents: "**"
+              TargetFolder: "$(Build.ArtifactStagingDirectory)"
+            displayName: "Copy files"
+
+  - stage: Deploy
+      displayName: 'Deploy stage'
+      dependsOn: Build
+      condition: succeeded()
+      jobs:
+        - deployment: DeployJob
+          displayName: 'Deploy job'
+          pool:
+            vmImage: 'ubuntu-latest'
+          environment: 'production-environment'
+          strategy:
+            runOnce:
+              deploy:
+                steps:
+                  - task: AzureStaticWebApp@0
+                    inputs:
+                      app_location: '$(Build.ArtifactStagingDirectory)/build'
+                      api_location: '<API_URL>' #mudar
+                      app_artifact_location: '$(Build.ArtifactStagingDirectory)'
+                      output_location: 'build'
+                      app_build_command: ''
